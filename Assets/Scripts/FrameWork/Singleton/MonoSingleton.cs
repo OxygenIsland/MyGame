@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using GameFramework;
+using NLog;
+using UnityEngine;
 
 namespace DesignPattern.SingleTon
 {
     public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
+        private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
         [SerializeField]
         protected bool dontDestroyOnLoad = false;
         private static T instance;
@@ -19,7 +22,7 @@ namespace DesignPattern.SingleTon
                         instance = (T)FindObjectOfType(typeof(T), true);
                         if (FindObjectsOfType(typeof(T), true).Length > 2)
                         {
-                            Stark.Core.Logs.Log.Error("there are two instance in the scene!");
+                            Log.Error("there are two instance in the scene!");
                         }
                         if (instance == null)
                         {
@@ -48,7 +51,7 @@ namespace DesignPattern.SingleTon
                 if (instance != this)
                 {
                     Destroy(this);
-                    Stark.Core.Logs.Log.Error("there are two instance in the scene! name:" + gameObject.name);
+                    Log.Error("there are two instance in the scene! name:" + gameObject.name);
                     return;
                 }
             }
@@ -69,6 +72,7 @@ namespace DesignPattern.SingleTon
     /// <typeparam name="T"></typeparam>
     public class MonoSingletonWithouNew<T> : MonoBehaviour where T : MonoBehaviour
     {
+        private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
         [SerializeField]
         protected bool dontDestroyOnLoad = false;
         private static T instance;
@@ -84,7 +88,7 @@ namespace DesignPattern.SingleTon
                         instance = (T)FindObjectOfType(typeof(T), true);
                         if (FindObjectsOfType(typeof(T), true).Length > 2)
                         {
-                            Stark.Core.Logs.Log.Error("there are two instance in the scene!");
+                            Log.Error("there are two instance in the scene!");
                         }
                     }
                 }
@@ -107,7 +111,7 @@ namespace DesignPattern.SingleTon
                 if (instance != this)
                 {
                     Destroy(this);
-                    Stark.Core.Logs.Log.Error("there are two instance in the scene! name:" + gameObject.name);
+                    Log.Error("there are two instance in the scene! name:" + gameObject.name);
                     return;
                 }
             }

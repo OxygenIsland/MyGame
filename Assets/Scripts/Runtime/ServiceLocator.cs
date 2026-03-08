@@ -2,6 +2,7 @@
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Fsm;
+using NLog;
 
 namespace UnityGameFramework.Runtime
 {
@@ -11,6 +12,7 @@ namespace UnityGameFramework.Runtime
     /// </summary>
     public static class ServiceLocator
     {
+        private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
         public static IFsmManager Fsm { get; private set; }
         public static IEventManager Event { get; private set; }
         // 后续可扩展：

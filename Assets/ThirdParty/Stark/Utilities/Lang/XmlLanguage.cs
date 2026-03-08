@@ -1,4 +1,5 @@
-﻿using Stark.Core.Logs;
+﻿using GameFramework;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +21,7 @@ namespace Stark.Core.Utilities
     /// </summary>
     public class XmlLanguage : ILanguage
     {
+        private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// XmlLanguage （必须有公共无参构造函数）
         /// </summary>

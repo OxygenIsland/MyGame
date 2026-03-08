@@ -1,4 +1,5 @@
-﻿using Stark.Core.Logs;
+﻿using GameFramework;
+using NLog;
 using Stark.Core.Serialize;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Stark.Core.Utilities
     /// </summary>
     public class CsvLanguage : ILanguage
     {
+        private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// CsvLanguage （必须有公共无参构造函数）
         /// </summary>

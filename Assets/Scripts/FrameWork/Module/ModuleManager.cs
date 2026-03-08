@@ -11,13 +11,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Xml.Linq;
-using Stark.Core.Logs;
+using GameFramework;
+using NLog;
 using StarWorld.Common.Utility;
 
 namespace StarWorld.FrameWork
 {
     public static class ModuleFactory
     {
+        private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
         private static Dictionary<string, Func<IModule>> _moduleFactories =
             new Dictionary<string, Func<IModule>>();
         private static Dictionary<string, Func<IController>> _controllerFactories =
@@ -80,6 +82,7 @@ namespace StarWorld.FrameWork
 
     public class ModuleManager : Singleton<ModuleManager>
     {
+        private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
         private Dictionary<string, ModuleConfig> _moduleConfig =
             new Dictionary<string, ModuleConfig>();
         private Dictionary<string, IModule> _loadedModules = new Dictionary<string, IModule>();

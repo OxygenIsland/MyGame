@@ -1,4 +1,5 @@
-﻿using Stark.Core.Logs;
+﻿using GameFramework;
+using NLog;
 using System.Collections.Generic;
 
 namespace Stark.Core.Utilities
@@ -8,6 +9,7 @@ namespace Stark.Core.Utilities
     /// </summary>
     public class Lang
     {
+        private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
         private static Dictionary<string, string> s_dict = new Dictionary<string, string>(128);
 
         /// <summary>

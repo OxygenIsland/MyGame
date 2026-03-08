@@ -17,6 +17,7 @@ using GameFramework;
 using GameFramework.Fsm;
 using GameFramework.Event;
 using GameFramework.Procedure;
+using NLog;
 
 namespace UnityGameFramework.Runtime
 {
@@ -28,7 +29,7 @@ namespace UnityGameFramework.Runtime
     {
 
         private IFsm<GameEntry> m_ProcedureFsm;
-
+        private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
 
         private void Awake()
         {
@@ -42,9 +43,9 @@ namespace UnityGameFramework.Runtime
             InitFrameworkModules();
 
             // ④ 启动流程状态机
-            StartProcedure();
+            //StartProcedure();
 
-            Log.Info("[GameEntry] 框架初始化完毕，应用启动。");
+            Log.Error("框架初始化完毕，应用启动。");
         }
 
         private void Update()
@@ -56,7 +57,7 @@ namespace UnityGameFramework.Runtime
         private void OnDestroy()
         {
             GameFrameworkEntry.Shutdown();
-            Log.Info("[GameEntry] 框架已关闭。");
+            Log.Info("框架已关闭。");
         }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         private void InitLogSystem()
         {
-
+            NLogManager.Initialize();
         }
 
         /// <summary>

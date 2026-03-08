@@ -7,12 +7,14 @@
  */
 
 using System;
-using Stark.Core.Logs;
+using GameFramework;
+using NLog;
 
 namespace StarWorld.Common.Utility
 {
     public class CircularBuffer
     {
+        private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
         private readonly byte[] buffer;
         private readonly int bufferSize;
         private int readCursor;  // 已读取位置
