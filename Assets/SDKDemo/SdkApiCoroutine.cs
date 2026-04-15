@@ -33,7 +33,7 @@ public class SdkApiCoroutine : MonoBehaviour
         }
 
         // 3. 使用 UnityWebRequest（协程模式通常配合 UWR，保持和旧代码一致）
-        var uwr = UnityEngine.Networking.UnityWebRequest.Post(
+        var uwr = UnityEngine.Networking.UnityWebRequest.PostWwwForm(
             "https://api.example.com/user/login",
             $"{{\"uid\":\"{uid}\"}}");
         uwr.SetRequestHeader("Content-Type", "application/json");
