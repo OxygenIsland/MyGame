@@ -16,7 +16,6 @@ namespace UnityGameFramework.Runtime
     public sealed class GameAppEntryPoint : IStartable, ITickable, IDisposable
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        private string _logPrefix = "[GameAppEntryPoint]";
         private readonly IFsmManager m_FsmManager;
         private readonly IEventManager m_EventManager;
         private readonly IProcedureManager m_ProcedureManager;
@@ -35,7 +34,7 @@ namespace UnityGameFramework.Runtime
         {
             StartProcedure();
 
-            Log.Info($"{_logPrefix} : 框架初始化完毕，应用启动。");
+            Log.Info("框架初始化完毕，应用启动。");
         }
 
         public void Tick()
@@ -45,7 +44,7 @@ namespace UnityGameFramework.Runtime
 
         public void Dispose()
         {
-            Log.Info($"{_logPrefix} : 框架已关闭。");
+            Log.Info("框架已关闭。");
         }
 
         private void StartProcedure()
@@ -60,7 +59,7 @@ namespace UnityGameFramework.Runtime
 
             m_ProcedureManager.StartProcedure<ProcedureLaunch>();
 
-            Log.Info($"{_logPrefix} : 流程状态机启动，当前流程：ProcedureLaunch。");
+            Log.Info("流程状态机启动，当前流程：ProcedureLaunch。");
         }
     }
 }
