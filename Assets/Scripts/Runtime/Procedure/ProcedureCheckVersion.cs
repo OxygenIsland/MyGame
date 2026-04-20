@@ -1,8 +1,8 @@
-using GameFramework.Fsm;
-using UnityEngine;
-using UnityGameFramework.Runtime;
+using GameFramework.Procedure;
 
-public class ProcedureCheckVersion : FsmState<GameEntry>
+namespace UnityGameFramework.Runtime
 {
-
+    public class ProcedureCheckVersion : ProcedureBase
+    {
+    }
 }

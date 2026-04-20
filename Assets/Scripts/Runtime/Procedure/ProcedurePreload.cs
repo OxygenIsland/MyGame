@@ -1,8 +1,8 @@
-using GameFramework.Fsm;
-using UnityEngine;
-using UnityGameFramework.Runtime;
+using GameFramework.Procedure;
 
-public class ProcedurePreload :FsmState<GameEntry>
+namespace UnityGameFramework.Runtime
 {
-    
+    public class ProcedurePreload : ProcedureBase
+    {
+    }
 }

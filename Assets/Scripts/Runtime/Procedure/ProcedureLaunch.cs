@@ -1,7 +1,8 @@
-using GameFramework.Fsm;
-using UnityGameFramework.Runtime;
+using GameFramework.Procedure;
 
-public class ProcedureLaunch : FsmState<GameEntry>
+namespace UnityGameFramework.Runtime
 {
-    
+    public class ProcedureLaunch : ProcedureBase
+    {
+    }
 }
