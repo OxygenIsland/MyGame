@@ -20,6 +20,7 @@ using GameFramework;
 using GameFramework.Event;
 using GameFramework.Fsm;
 using GameFramework.Procedure;
+using MyGame.Scopes.Installers;
 using VContainer;
 using VContainer.Unity;
 
@@ -47,6 +48,9 @@ namespace UnityGameFramework.Runtime
             builder.Register<IProcedureManager>(
                 _ => GameFrameworkEntry.GetModule<IProcedureManager>(),
                 Lifetime.Singleton);
+
+            // ── Toolkit 基础设施模块 ───────────────────────────────────
+            new ToolkitInstaller().Install(builder);
 
             // ── 注入场景中已存在的 MonoBehaviour ──────────────────────
             // GameEntry 仅作为 Unity 桥接器存在，不再是 FSM Owner。

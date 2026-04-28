@@ -4,6 +4,7 @@
     "references": [
         "MyGame.GameFramework",
         "MyGame.Runtime",
+        "MyGame.Toolkit",
         "VContainer"
     ],
     "includePlatforms": [],

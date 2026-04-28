@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace StarWorld.MapKit.Core.Cache
+namespace MyGame.Toolkit.DiskCache
 {
     /// <summary>
     /// 基于 MD5 的 <see cref="IFileHashProvider"/> 默认实现。

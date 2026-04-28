@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace StarWorld.MapKit.Core.Cache
+namespace MyGame.Toolkit.DiskCache
 {
     /// <summary>
-    /// 缓存清单文件的序列化模型，由 <see cref="FileCacheManager"/> 读写。
+    /// 缓存清单文件的序列化模型，由 <see cref="DiskCacheManager"/> 读写。
     /// <para>使用 <see cref="JsonUtility"/> 进行 JSON 序列化/反序列化，
     /// 保证零外部依赖、最大兼容性。</para>
     /// </summary>

@@ -1,12 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace StarWorld.MapKit.Core.Cache
+namespace MyGame.Toolkit.DiskCache
 {
     /// <summary>
     /// 文件哈希计算策略接口。
     /// <para>默认实现为 <see cref="MD5FileHashProvider"/>（MD5）。
-    /// 如需使用 SHA256、CRC32 等算法，实现此接口并注入 <see cref="FileCacheConfig"/> 即可。</para>
+    /// 如需使用 SHA256、CRC32 等算法，实现此接口并注入 <see cref="DiskCacheConfig"/> 即可。</para>
     /// </summary>
     public interface IFileHashProvider
     {

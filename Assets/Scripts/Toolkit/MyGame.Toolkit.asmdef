@@ -2,7 +2,7 @@
     "name": "MyGame.Toolkit",
     "rootNamespace": "StarWorld.Common.Utility",
     "references": [
-        "GUID:ba36189ada264a5ea0d06f4e4b25b09d"
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

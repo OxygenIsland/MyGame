@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace StarWorld.MapKit.Core.Cache
+namespace MyGame.Toolkit.DiskCache
 {
     /// <summary>
     /// 本地文件缓存管理器。
@@ -25,7 +25,7 @@ namespace StarWorld.MapKit.Core.Cache
     ///     .SetCacheDirectory(Path.Combine(Application.persistentDataPath, "MyCache"))
     ///     .SetMaxCacheBytes(500 * 1024 * 1024) // 500 MB
     ///     .Build();
-    /// var cacheManager = new FileCacheManager(config);
+    /// var cacheManager = new FileCacheManager(config, new MD5FileHashProvider());
     ///
     /// // 2. 下载前检查
     /// string url = "https://cdn.example.com/model.glb";
@@ -44,9 +44,9 @@ namespace StarWorld.MapKit.Core.Cache
     /// </code>
     /// </example>
     /// </summary>
-    public sealed class FileCacheManager : IDiskCache
+    public sealed class DiskCacheManager : IDiskCache
     {
-        private readonly FileCacheConfig _config;
+        private readonly DiskCacheConfig _config;
         private readonly IFileHashProvider _hashProvider;
         private FileCacheManifest _manifest;
         private readonly Dictionary<string, int> _keyIndex; // key → _manifest.Entries 索引
@@ -64,23 +64,18 @@ namespace StarWorld.MapKit.Core.Cache
         }
 
         /// <summary>
-        /// 使用指定配置创建管理器并加载已有清单。
+        /// 使用指定配置和哈希提供器创建管理器并加载已有清单。由 VContainer 通过构造函数注入。
         /// </summary>
-        public FileCacheManager(FileCacheConfig config)
+        public DiskCacheManager(DiskCacheConfig config, IFileHashProvider hashProvider)
         {
             _config = config ?? throw new ArgumentNullException(nameof(config));
-            _hashProvider = config.HashProvider;
+            _hashProvider = hashProvider ?? throw new ArgumentNullException(nameof(hashProvider));
             _keyIndex = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
             EnsureCacheDirectory();
             _manifest = LoadManifest();
             RebuildIndex();
         }
-
-        /// <summary>
-        /// 使用默认配置创建管理器。
-        /// </summary>
-        public FileCacheManager() : this(FileCacheConfig.Default) { }
 
         #region 查询 API
 
@@ -423,7 +418,7 @@ namespace StarWorld.MapKit.Core.Cache
         }
 
         /// <summary>
-        /// 当缓存总量超过 <see cref="FileCacheConfig.MaxCacheBytes"/> 时，
+        /// 当缓存总量超过 <see cref="DiskCacheConfig.MaxCacheBytes"/> 时，
         /// 按 LRU（最近最少使用）策略淘汰最旧的条目，直到总量降至限制以下。
         /// </summary>
         /// <returns>淘汰的条目数。</returns>

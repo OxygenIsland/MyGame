@@ -1,13 +1,13 @@
 using System.IO;
 using UnityEngine;
 
-namespace StarWorld.MapKit.Core.Cache
+namespace MyGame.Toolkit.DiskCache
 {
     /// <summary>
     /// 文件缓存系统的配置。
     /// 使用 Builder 模式便于链式配置。
     /// </summary>
-    public sealed class FileCacheConfig
+    public sealed class DiskCacheConfig
     {
         /// <summary>缓存根目录（默认: Application.persistentDataPath/FileCache）。</summary>
         public string CacheDirectory { get; }
@@ -24,24 +24,20 @@ namespace StarWorld.MapKit.Core.Cache
         /// <summary>在读取缓存时是否验证本地文件存在性（默认 true）。</summary>
         public bool VerifyFileExistence { get; }
 
-        /// <summary>文件哈希计算策略（默认: MD5）。</summary>
-        public IFileHashProvider HashProvider { get; }
-
         /// <summary>清单文件的完整路径。</summary>
         public string ManifestPath => Path.Combine(CacheDirectory, ManifestFileName);
 
-        private FileCacheConfig(Builder builder)
+        private DiskCacheConfig(Builder builder)
         {
             CacheDirectory = builder.CacheDirectory;
             ManifestFileName = builder.ManifestFileName;
             MaxCacheBytes = builder.MaxCacheBytes;
             AutoSave = builder.AutoSave;
             VerifyFileExistence = builder.VerifyFileExistence;
-            HashProvider = builder.HashProvider ?? MD5FileHashProvider.Instance;
         }
 
         /// <summary>使用默认配置创建实例。</summary>
-        public static FileCacheConfig Default => new Builder().Build();
+        public static DiskCacheConfig Default => new Builder().Build();
 
         /// <summary>
         /// 配置构造器。
@@ -53,7 +49,6 @@ namespace StarWorld.MapKit.Core.Cache
             internal long MaxCacheBytes;
             internal bool AutoSave = true;
             internal bool VerifyFileExistence = true;
-            internal IFileHashProvider HashProvider;
 
             public Builder()
             {
@@ -95,16 +90,9 @@ namespace StarWorld.MapKit.Core.Cache
                 return this;
             }
 
-            /// <summary>设置文件哈希计算策略。默认使用 MD5。</summary>
-            public Builder SetHashProvider(IFileHashProvider provider)
+            public DiskCacheConfig Build()
             {
-                HashProvider = provider;
-                return this;
-            }
-
-            public FileCacheConfig Build()
-            {
-                return new FileCacheConfig(this);
+                return new DiskCacheConfig(this);
             }
         }
     }

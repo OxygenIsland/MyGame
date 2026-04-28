@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace StarWorld.MapKit.Core.Cache
+namespace MyGame.Toolkit.DiskCache
 {
     /// <summary>
     /// 单条文件缓存记录，可被 JsonUtility 序列化。
