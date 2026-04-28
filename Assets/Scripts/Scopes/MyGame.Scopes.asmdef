@@ -1,0 +1,18 @@
+{
+    "name": "MyGame.Scopes",
+    "rootNamespace": "",
+    "references": [
+        "MyGame.GameFramework",
+        "MyGame.Runtime",
+        "VContainer"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

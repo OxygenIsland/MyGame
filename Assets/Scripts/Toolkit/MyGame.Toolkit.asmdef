@@ -1,0 +1,16 @@
+{
+    "name": "MyGame.Toolkit",
+    "rootNamespace": "StarWorld.Common.Utility",
+    "references": [
+        "GUID:ba36189ada264a5ea0d06f4e4b25b09d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

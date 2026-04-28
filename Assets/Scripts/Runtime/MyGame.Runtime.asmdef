@@ -1,0 +1,17 @@
+{
+    "name": "MyGame.Runtime",
+    "rootNamespace": "UnityGameFramework.Runtime",
+    "references": [
+        "MyGame.GameFramework",
+        "VContainer"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

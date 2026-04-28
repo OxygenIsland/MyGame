@@ -1,4 +1,8 @@
 ﻿<Solution>
+  <Project Path="MyGame.GameFramework.csproj" />
+  <Project Path="MyGame.Toolkit.csproj" />
+  <Project Path="MyGame.Runtime.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="MyGame.Scopes.csproj" />
 </Solution>
