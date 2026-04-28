@@ -1,4 +1,5 @@
 using MyGame.Toolkit.DiskCache;
+using MyGame.Toolkit.IO;
 using VContainer;
 using VContainer.Unity;
 
@@ -24,6 +25,16 @@ namespace MyGame.Scopes.Installers
 
             // IDiskCache → FileCacheManager（Dispose 由容器自动调用）
             builder.Register<IDiskCache, DiskCacheManager>(Lifetime.Singleton);
+
+            // ── IO（本地文件加载器）─────────────────────────────────────
+            // IFileLoader<string> → TextFileLoader（默认 UTF-8 编码）
+            builder.Register<IFileLoader<string>, TextFileLoader>(Lifetime.Singleton);
+
+            // IFileLoader<byte[]> → RawBytesFileLoader（无状态，Singleton 安全）
+            builder.Register<IFileLoader<byte[]>, RawBytesFileLoader>(Lifetime.Singleton);
+
+            // IJsonFileLoader → JsonFileLoader（默认 UTF-8 + Newtonsoft 默认设置）
+            builder.Register<IJsonFileLoader, JsonFileLoader>(Lifetime.Singleton);
         }
     }
 }
