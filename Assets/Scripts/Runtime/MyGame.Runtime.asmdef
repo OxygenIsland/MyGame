@@ -3,6 +3,7 @@
     "rootNamespace": "UnityGameFramework.Runtime",
     "references": [
         "MyGame.GameFramework",
+        "MyGame.Toolkit",
         "VContainer",
         "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],

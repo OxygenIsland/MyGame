@@ -14,26 +14,26 @@ namespace MyGame.Toolkit.Network
     /// <summary>
     /// 基于 UniTask 的 HTTP 工具类。所有公共方法均为 async UniTask，支持 CancellationToken。
     /// </summary>
-    public static class HttpRequestUtil
+    public static class WebRequestUtil
     {
         private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
 
         /// <summary>HTTP 请求结果封装，包含成功标志、数据和错误信息。</summary>
-        public readonly struct HttpResult<T>
+        public readonly struct WebRequestResult<T>
         {
             public bool Success { get; }
             public T Data { get; }
             public string Error { get; }
 
-            private HttpResult(bool success, T data, string error)
+            private WebRequestResult(bool success, T data, string error)
             {
                 Success = success;
                 Data = data;
                 Error = error;
             }
 
-            public static HttpResult<T> Ok(T data) => new HttpResult<T>(true, data, null);
-            public static HttpResult<T> Fail(string error) => new HttpResult<T>(false, default, error);
+            public static WebRequestResult<T> Ok(T data) => new WebRequestResult<T>(true, data, null);
+            public static WebRequestResult<T> Fail(string error) => new WebRequestResult<T>(false, default, error);
 
             public void Deconstruct(out bool success, out T data, out string error)
             {
@@ -78,27 +78,27 @@ namespace MyGame.Toolkit.Network
         }
 
         /// <summary>统一解析 JSON 响应：检查网络错误 → 反序列化 → 返回结果。</summary>
-        private static HttpResult<T> ParseJsonResponse<T>(UnityWebRequest request)
+        private static WebRequestResult<T> ParseJsonResponse<T>(UnityWebRequest request)
         {
             if (request.result != UnityWebRequest.Result.Success)
             {
                 Log.Error($"Request failed: {request.error} | URL: {request.url}");
-                return HttpResult<T>.Fail(request.error);
+                return WebRequestResult<T>.Fail(request.error);
             }
 
             string json = request.downloadHandler?.text;
             if (string.IsNullOrEmpty(json))
-                return HttpResult<T>.Fail("Empty response body");
+                return WebRequestResult<T>.Fail("Empty response body");
 
             try
             {
                 T data = JsonConvert.DeserializeObject<T>(json);
-                return HttpResult<T>.Ok(data);
+                return WebRequestResult<T>.Ok(data);
             }
             catch (Exception ex)
             {
                 Log.Error($"JSON parse error: {ex.Message}");
-                return HttpResult<T>.Fail($"JSON Error: {ex.Message}");
+                return WebRequestResult<T>.Fail($"JSON Error: {ex.Message}");
             }
         }
 
@@ -133,7 +133,7 @@ namespace MyGame.Toolkit.Network
         /// <summary>
         /// 发起 GET 请求，自动将 parameters 序列化为查询字符串，将响应反序列化为 T。
         /// </summary>
-        public static async UniTask<HttpResult<T>> GetAsync<T>(
+        public static async UniTask<WebRequestResult<T>> GetAsync<T>(
             string domain,
             string url,
             string token,
@@ -159,12 +159,12 @@ namespace MyGame.Toolkit.Network
             catch (OperationCanceledException)
             {
                 Log.Warn($"GET request cancelled: {fullUrl}");
-                return HttpResult<T>.Fail("Request cancelled");
+                return WebRequestResult<T>.Fail("Request cancelled");
             }
             catch (UnityWebRequestException ex)
             {
                 Log.Error($"GET request error: {ex.Message} | URL: {fullUrl}");
-                return HttpResult<T>.Fail(ex.Message);
+                return WebRequestResult<T>.Fail(ex.Message);
             }
 
             return ParseJsonResponse<T>(request);
@@ -173,7 +173,7 @@ namespace MyGame.Toolkit.Network
         /// <summary>
         /// 发起 POST 请求，将 data 序列化为 JSON body，将响应反序列化为 T。
         /// </summary>
-        public static async UniTask<HttpResult<T>> PostAsync<T>(
+        public static async UniTask<WebRequestResult<T>> PostAsync<T>(
             string domain,
             string url,
             string token,
@@ -201,12 +201,12 @@ namespace MyGame.Toolkit.Network
             catch (OperationCanceledException)
             {
                 Log.Warn($"POST request cancelled: {domain + url}");
-                return HttpResult<T>.Fail("Request cancelled");
+                return WebRequestResult<T>.Fail("Request cancelled");
             }
             catch (UnityWebRequestException ex)
             {
                 Log.Error($"POST request error: {ex.Message}");
-                return HttpResult<T>.Fail(ex.Message);
+                return WebRequestResult<T>.Fail(ex.Message);
             }
 
             return ParseJsonResponse<T>(request);
@@ -215,7 +215,7 @@ namespace MyGame.Toolkit.Network
         /// <summary>
         /// 发起 POST 请求，parameters 追加到 URL，bodyData 作为原始 byte[] body。
         /// </summary>
-        public static async UniTask<HttpResult<T>> PostWithQueryParamsAsync<T>(
+        public static async UniTask<WebRequestResult<T>> PostWithQueryParamsAsync<T>(
             string domain,
             string url,
             string token,
@@ -240,12 +240,44 @@ namespace MyGame.Toolkit.Network
             catch (OperationCanceledException)
             {
                 Log.Warn($"POST request cancelled: {fullUrl}");
-                return HttpResult<T>.Fail("Request cancelled");
+                return WebRequestResult<T>.Fail("Request cancelled");
             }
             catch (UnityWebRequestException ex)
             {
                 Log.Error($"POST request error: {ex.Message}");
-                return HttpResult<T>.Fail(ex.Message);
+                return WebRequestResult<T>.Fail(ex.Message);
+            }
+
+            return ParseJsonResponse<T>(request);
+        }
+
+        /// <summary>
+        /// 发起 Multipart POST 请求，将 formSections 作为 multipart/form-data 上传，将响应反序列化为 T。
+        /// </summary>
+        public static async UniTask<WebRequestResult<T>> PostMultipartAsync<T>(
+            string url,
+            string token,
+            List<IMultipartFormSection> formSections,
+            int timeout = 30,
+            CancellationToken cancellationToken = default)
+        {
+            using var request = UnityWebRequest.Post(url, formSections);
+            request.timeout = timeout;
+            SetAuthHeader(request, token);
+
+            try
+            {
+                await request.SendWebRequest().ToUniTask(cancellationToken: cancellationToken);
+            }
+            catch (OperationCanceledException)
+            {
+                Log.Warn($"POST multipart cancelled: {url}");
+                return WebRequestResult<T>.Fail("Request cancelled");
+            }
+            catch (UnityWebRequestException ex)
+            {
+                Log.Error($"POST multipart error: {ex.Message} | URL: {url}");
+                return WebRequestResult<T>.Fail(ex.Message);
             }
 
             return ParseJsonResponse<T>(request);

@@ -7,7 +7,7 @@ using NLog.Config;
 public static class NLogManager
 {
     private static bool _initialized = false;
-
+    public static readonly string logDirectory = Path.Combine(Application.persistentDataPath, "Logs");
     public static void Initialize()
     {
         if (_initialized) return;
@@ -17,6 +17,10 @@ public static class NLogManager
 
         if (File.Exists(configPath))
         {
+            // 注入 Unity 平台路径变量，供 NLog.config 中 ${var:logDir} 使用
+            // 必须在 XmlLoggingConfiguration 解析前设置，否则变量在解析时不可用
+            NLog.GlobalDiagnosticsContext.Set("logDir", logDirectory);
+
             var config = new XmlLoggingConfiguration(configPath);
             
             // 非编辑器模式下，移除 UnityConsole 输出规则
