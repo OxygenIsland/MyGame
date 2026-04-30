@@ -59,9 +59,8 @@ public static class NLogManager
     {
         var config = new LoggingConfiguration();
 
-        string logDir = Path.Combine(Application.persistentDataPath, "Logs");
-        Directory.CreateDirectory(logDir);
-        string logFile = Path.Combine(logDir, "game.log");
+        Directory.CreateDirectory(logDirectory);
+        string logFile = Path.Combine(logDirectory, "game.log");
 
         var fileTarget = new NLog.Targets.FileTarget("logfile")
         {

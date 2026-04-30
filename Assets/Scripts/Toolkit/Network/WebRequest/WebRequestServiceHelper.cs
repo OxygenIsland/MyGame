@@ -9,39 +9,15 @@ using NLog;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace MyGame.Toolkit.Network
+namespace MyGame.Toolkit.Network.Internal
 {
     /// <summary>
-    /// 基于 UniTask 的 HTTP 工具类。所有公共方法均为 async UniTask，支持 CancellationToken。
+    /// 基于 UniTask 的 HTTP 工具类（内部实现细节）。
+    /// 业务层请统一通过 IWebRequestService 发起请求。
     /// </summary>
-    public static class WebRequestUtil
+    internal static class WebRequestServiceHelper
     {
         private static readonly NLog.Logger Log = LogManager.GetCurrentClassLogger();
-
-        /// <summary>HTTP 请求结果封装，包含成功标志、数据和错误信息。</summary>
-        public readonly struct WebRequestResult<T>
-        {
-            public bool Success { get; }
-            public T Data { get; }
-            public string Error { get; }
-
-            private WebRequestResult(bool success, T data, string error)
-            {
-                Success = success;
-                Data = data;
-                Error = error;
-            }
-
-            public static WebRequestResult<T> Ok(T data) => new WebRequestResult<T>(true, data, null);
-            public static WebRequestResult<T> Fail(string error) => new WebRequestResult<T>(false, default, error);
-
-            public void Deconstruct(out bool success, out T data, out string error)
-            {
-                success = Success;
-                data = Data;
-                error = Error;
-            }
-        }
 
         /// <summary>忽略 SSL 证书校验，用于内网/自签名证书场景。</summary>
         private sealed class IgnoreCertHandler : CertificateHandler
@@ -222,7 +198,6 @@ namespace MyGame.Toolkit.Network
             Dictionary<string, string> parameters,
             byte[] bodyData,
             CancellationToken cancellationToken = default)
-            where T : class, new()
         {
             string fullUrl = BuildUrl(domain, url, parameters);
             Log.Info($"POST URL: {fullUrl}");

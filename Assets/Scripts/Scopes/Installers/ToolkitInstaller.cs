@@ -1,5 +1,6 @@
 using MyGame.Toolkit.DiskCache;
 using MyGame.Toolkit.IO;
+using MyGame.Toolkit.Network;
 using VContainer;
 using VContainer.Unity;
 
@@ -35,6 +36,11 @@ namespace MyGame.Scopes.Installers
 
             // IJsonFileLoader → JsonFileLoader（默认 UTF-8 + Newtonsoft 默认设置）
             builder.Register<IJsonFileLoader, JsonFileLoader>(Lifetime.Singleton);
+
+            // ── Network（Web 请求服务）──────────────────────────────────────
+            // IWebRequestService → WebRequestService（并发调度 + 优先级 + 取消管理）
+            // 容器销毁时自动调用 Dispose() 触发 CancelAll()。
+            builder.Register<IWebRequestService, WebRequestService>(Lifetime.Singleton);
         }
     }
 }

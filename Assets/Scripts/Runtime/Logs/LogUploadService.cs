@@ -30,24 +30,20 @@ namespace UnityGameFramework.Runtime
             /// <summary>是否上报成功。</summary>
             public bool Success { get; }
 
-            /// <summary>服务端返回的工单 ID，可用于后台查询（服务端不支持时为 null）。</summary>
-            public string TicketId { get; }
-
             /// <summary>失败时的错误描述。</summary>
             public string Error { get; }
 
-            private UploadResult(bool success, string ticketId, string error)
+            private UploadResult(bool success, string error)
             {
                 Success = success;
-                TicketId = ticketId;
                 Error = error;
             }
 
             /// <summary>构造成功结果。</summary>
-            public static UploadResult Ok(string ticketId) => new UploadResult(true, ticketId, null);
+            public static UploadResult Ok() => new UploadResult(true, null);
 
             /// <summary>构造失败结果。</summary>
-            public static UploadResult Fail(string error) => new UploadResult(false, null, error);
+            public static UploadResult Fail(string error) => new UploadResult(false, error);
         }
 
         /// <summary>
@@ -60,12 +56,16 @@ namespace UnityGameFramework.Runtime
         /// <param name="cancellationToken">取消令牌。</param>
         /// <returns>上报结果，包含服务端返回的工单 ID（若服务端支持）。</returns>
         public static async UniTask<UploadResult> UploadAsync(
+            IWebRequestService webRequestService,
             string uploadUrl,
             string token,
             string userId,
             string reason = "manual_feedback",
             CancellationToken cancellationToken = default)
         {
+            if (webRequestService == null)
+                return UploadResult.Fail("webRequestService is null");
+
             if (string.IsNullOrEmpty(uploadUrl))
                 return UploadResult.Fail("uploadUrl is null or empty");
 
@@ -101,16 +101,26 @@ namespace UnityGameFramework.Runtime
             string metaJson = BuildMetaJson(userId, reason);
             string fileName = $"logs_{SanitizeFileName(userId)}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.zip";
 
-            // 4. Multipart POST 上传（通过 WebRequestUtil 统一处理）
+            // 4. Multipart POST 上传（统一通过 IWebRequestService）
             var formSections = new List<IMultipartFormSection>
             {
                 new MultipartFormDataSection("meta", metaJson, "application/json"),
                 new MultipartFormFileSection("file", zipBytes, fileName, "application/zip")
             };
 
+            var options = new WebRequestOptions
+            {
+                Tag = "log-upload",
+                Token = token,
+                Timeout = 30,
+            };
+
             var (uploadSuccess, serverResponse, uploadError) =
-                await WebRequestUtil.PostMultipartAsync<UploadServerResponse>(
-                    uploadUrl, token, formSections, timeout: 30, cancellationToken: cancellationToken);
+                await webRequestService.PostMultipartAsync<UploadServerResponse>(
+                    uploadUrl,
+                    formSections,
+                    options,
+                    cancellationToken);
 
             if (!uploadSuccess)
             {
@@ -121,7 +131,7 @@ namespace UnityGameFramework.Runtime
             // 5. 取服务端返回的工单 ID（服务端不返回时为 null）
             string ticketId = serverResponse?.TicketId;
             Log.Info($"LogUpload: success. TicketId={ticketId ?? "N/A"}");
-            return UploadResult.Ok(ticketId);
+            return UploadResult.Ok();
         }
 
         // ─────────────────────────────────────────────────

@@ -2,8 +2,7 @@ namespace MyGame.Toolkit.IO
 {
     /// <summary>
     /// 文件加载结果封装，包含成功标志、数据和错误信息。
-    /// <para>设计参考 <see cref="Network.WebRequestUtil"/> 中的 HttpResult&lt;T&gt;，
-    /// 保持项目内结果类型风格一致。</para>
+    /// <para>设计参考 Toolkit 层统一结果模型，保持项目内结果类型风格一致。</para>
     /// </summary>
     /// <typeparam name="T">加载后的数据类型。</typeparam>
     public readonly struct FileLoadResult<T>

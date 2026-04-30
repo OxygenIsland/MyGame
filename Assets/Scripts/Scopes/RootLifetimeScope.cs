@@ -56,6 +56,9 @@ namespace UnityGameFramework.Runtime
             // GameEntry 仅作为 Unity 桥接器存在，不再是 FSM Owner。
             builder.RegisterComponentInHierarchy<GameEntry>();
 
+            // ── Runtime 日志上报门面 ───────────────────────────────────
+            builder.Register<ILogUploadService, LogUploadFacade>(Lifetime.Singleton);
+
             // ── 标准版应用入口 ───────────────────────────────────────
             // 由纯 C# EntryPoint 负责应用初始化、逐帧驱动与销毁清理。
             builder.RegisterEntryPoint<GameAppEntryPoint>();
