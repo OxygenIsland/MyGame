@@ -8,8 +8,8 @@
 
 ```
 Scripts/
-├── GameFramework/          # 纯 C# GF框架核心（无 Unity 依赖）
-│   └── MyGame.GameFramework.asmdef
+├── OhMyPackage/          # 纯 C# GF框架核心（无 Unity 依赖）
+│   └── MyGame.OhMyPackage.asmdef
 │
 ├── FrameWork/              # 自定义基础框架层（单例、消息、生命周期）
 │   ├── Message/            # 消息总线 (MsgManager, MsgID, Bundle)
@@ -51,12 +51,12 @@ Scripts/
 ## Assembly 依赖关系
 
 ```
-MyGame.GameFramework  (纯 C#，noEngineReferences)
+MyGame.OhMyPackage  (纯 C#，noEngineReferences)
         ↑
-MyGame.Framework      (Unity + NLog → GameFramework)
-MyGame.Runtime        (Unity + VContainer → GameFramework)
+MyGame.Framework      (Unity + NLog → OhMyPackage)
+MyGame.Runtime        (Unity + VContainer → OhMyPackage)
         ↑
-MyGame.Scopes         (VContainer → GameFramework + Runtime)
+MyGame.Scopes         (VContainer → OhMyPackage + Runtime)
 
 MyGame.Toolkit        (Unity，独立，无框架依赖)
 ```
@@ -69,4 +69,4 @@ MyGame.Toolkit        (Unity，独立，无框架依赖)
 | UniTask | 异步编程 |
 | R3 | 响应式扩展 |
 | NLog | 结构化日志（via NuGet） |
-| GameFramework | 游戏模块管理框架 |
+| OhMyPackage | 游戏模块管理框架 |

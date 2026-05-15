@@ -5,8 +5,8 @@ using Launcher;
 using UnityEngine;
 using UnityEngine.Networking;
 using YooAsset;
-using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
-using Utility = GameFramework.Utility;
+using ProcedureOwner = OhMyPackage.Fsm.IFsm<OhMyPackage.Procedure.IProcedureManager>;
+using Utility = OhMyPackage.Utility;
 
 namespace Procedure
 {

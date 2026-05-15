@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
+using ProcedureOwner = OhMyPackage.Fsm.IFsm<OhMyPackage.Procedure.IProcedureManager>;
 
 namespace Procedure
 {

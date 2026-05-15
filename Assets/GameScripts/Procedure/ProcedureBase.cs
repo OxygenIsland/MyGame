@@ -1,9 +1,9 @@
-﻿using GameFramework.Core.Framework;
-using GameFramework.Resource;
+﻿using OhMyPackage.Core.Framework;
+using OhMyPackage.Resource;
 
 namespace Procedure
 {
-    public abstract class ProcedureBase : GameFramework.Procedure.ProcedureBase
+    public abstract class ProcedureBase : OhMyPackage.Procedure.ProcedureBase
     {
         /// <summary>
         /// 获取流程是否使用原生对话框

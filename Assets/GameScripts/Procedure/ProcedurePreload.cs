@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using GameFramework;
-using GameFramework.Event;
-using GameFramework.Resource;
+using OhMyPackage;
+using OhMyPackage.Event;
+using OhMyPackage.Resource;
 using Launcher;
 using UnityEngine;
 using YooAsset;
-using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
+using ProcedureOwner = OhMyPackage.Fsm.IFsm<OhMyPackage.Procedure.IProcedureManager>;
 
 namespace Procedure
 {

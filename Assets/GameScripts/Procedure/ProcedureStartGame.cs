@@ -1,7 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using GameFramework.Fsm;
-using GameFramework.Procedure;
+using OhMyPackage.Fsm;
+using OhMyPackage.Procedure;
 using Launcher;
 
 namespace Procedure

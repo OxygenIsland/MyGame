@@ -18,7 +18,7 @@ CommandLineArgsForDesignTimeEvaluation=-langversion:9.0 -define:UNITY_6000_3_10;
 CompilerGeneratedFilesOutputPath=
 MaxSupportedLangVersion=8.0
 ProjectAssetsFile=<PATH>Temp/obj/MyGame.Runtime/project.assets.json
-RootNamespace=GameFramework
+RootNamespace=OhMyPackage
 RunAnalyzers=
 RunAnalyzersDuringLiveAnalysis=
 SolutionPath=<PATH>MyGame.slnx
@@ -51,9 +51,9 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 
 [sourceFiles]
 Assets/Scripts/Runtime/Core/Framework/Base/DataStruct/
- GameFrameworkLinkedList.cs
- GameFrameworkLinkedListRange.cs
- GameFrameworkMultiDictionary.cs
+ OhMyPackageLinkedList.cs
+ OhMyPackageLinkedListRange.cs
+ OhMyPackageMultiDictionary.cs
  TypeNamePair.cs
 Assets/Scripts/Runtime/Core/Framework/Base/EventPool/
  BaseEventArgs.cs
@@ -61,13 +61,13 @@ Assets/Scripts/Runtime/Core/Framework/Base/EventPool/
  EventPool.Event.cs
  EventPoolMode.cs
 Assets/Scripts/Runtime/Core/Framework/Base/
- GameFrameworkAction.cs
- GameFrameworkEntry.cs
- GameFrameworkEventArgs.cs
- GameFrameworkException.cs
- GameFrameworkFunc.cs
- GameFrameworkModule.cs
- GameFrameworkSerializer.cs
+ OhMyPackageAction.cs
+ OhMyPackageEntry.cs
+ OhMyPackageEventArgs.cs
+ OhMyPackageException.cs
+ OhMyPackageFunc.cs
+ OhMyPackageModule.cs
+ OhMyPackageSerializer.cs
  MemoryPool/
   IMemory.cs
   MemoryPool.cs

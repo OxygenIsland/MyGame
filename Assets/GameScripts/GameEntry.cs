@@ -1,6 +1,6 @@
-using GameFramework;
-using GameFramework.Core.Framework;
-using GameFramework.Resource;
+using OhMyPackage;
+using OhMyPackage.Core.Framework;
+using OhMyPackage.Resource;
 using UnityEngine;
 
 public class GameEntry : MonoBehaviour

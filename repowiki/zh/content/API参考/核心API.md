@@ -6,9 +6,9 @@
 - [Module.cs](file://Assets/TEngine/Runtime/Core/Module.cs)
 - [Constant.cs](file://Assets/TEngine/Runtime/Core/Constant/Constant.cs)
 - [GameTime.cs](file://Assets/TEngine/Runtime/Core/GameTime/GameTime.cs)
-- [GameFrameworkLog.cs](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs)
-- [GameFrameworkLogLevel.cs](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLogLevel.cs)
-- [GameFrameworkLog.ILogHelper.cs](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.ILogHelper.cs)
+- [OhMyPackageLog.cs](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs)
+- [OhMyPackageLogLevel.cs](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLogLevel.cs)
+- [OhMyPackageLog.ILogHelper.cs](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.ILogHelper.cs)
 - [MemoryPool.cs](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.cs)
 - [IMemory.cs](file://Assets/TEngine/Runtime/Core/MemoryPool/IMemory.cs)
 - [MemoryPool.MemoryCollection.cs](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.MemoryCollection.cs)
@@ -34,7 +34,7 @@
 - 模块系统：ModuleSystem 类、Module 抽象类与 IUpdateModule 接口，涵盖模块注册、生命周期与调度。
 - 常量定义：Constant 常量集合，集中管理配置键名。
 - 时间管理：GameTime 提供帧时间采样与访问。
-- 日志系统：GameFrameworkLog 静态日志门面与日志等级、辅助器接口。
+- 日志系统：OhMyPackageLog 静态日志门面与日志等级、辅助器接口。
 - 内存池：MemoryPool 静态内存池门面、IMemory 接口、MemoryCollection 收集器与 MemoryPoolInfo 统计信息。
 
 文档对每个API提供参数说明、返回值描述、使用示例路径、注意事项、版本兼容性提示与性能特性说明，帮助开发者正确集成与优化。
@@ -51,9 +51,9 @@ MS["ModuleSystem.cs"]
 M["Module.cs"]
 C["Constant.cs"]
 GT["GameTime.cs"]
-LG["GameFrameworkLog.cs"]
-LGL["GameFrameworkLogLevel.cs"]
-ILH["GameFrameworkLog.ILogHelper.cs"]
+LG["OhMyPackageLog.cs"]
+LGL["OhMyPackageLogLevel.cs"]
+ILH["OhMyPackageLog.ILogHelper.cs"]
 MP["MemoryPool.cs"]
 IM["IMemory.cs"]
 MC["MemoryPool.MemoryCollection.cs"]
@@ -76,9 +76,9 @@ MPS --> MP
 - [Module.cs:1-40](file://Assets/TEngine/Runtime/Core/Module.cs#L1-L40)
 - [Constant.cs:1-21](file://Assets/TEngine/Runtime/Core/Constant/Constant.cs#L1-L21)
 - [GameTime.cs:1-55](file://Assets/TEngine/Runtime/Core/GameTime/GameTime.cs#L1-L55)
-- [GameFrameworkLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L1-L800)
-- [GameFrameworkLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLogLevel.cs#L1-L34)
-- [GameFrameworkLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.ILogHelper.cs#L1-L19)
+- [OhMyPackageLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L1-L800)
+- [OhMyPackageLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLogLevel.cs#L1-L34)
+- [OhMyPackageLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.ILogHelper.cs#L1-L19)
 - [MemoryPool.cs:1-208](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.cs#L1-L208)
 - [IMemory.cs:1-14](file://Assets/TEngine/Runtime/Core/MemoryPool/IMemory.cs#L1-L14)
 - [MemoryPool.MemoryCollection.cs:1-157](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.MemoryCollection.cs#L1-L157)
@@ -91,9 +91,9 @@ MPS --> MP
 - [Module.cs:1-40](file://Assets/TEngine/Runtime/Core/Module.cs#L1-L40)
 - [Constant.cs:1-21](file://Assets/TEngine/Runtime/Core/Constant/Constant.cs#L1-L21)
 - [GameTime.cs:1-55](file://Assets/TEngine/Runtime/Core/GameTime/GameTime.cs#L1-L55)
-- [GameFrameworkLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L1-L800)
-- [GameFrameworkLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLogLevel.cs#L1-L34)
-- [GameFrameworkLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.ILogHelper.cs#L1-L19)
+- [OhMyPackageLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L1-L800)
+- [OhMyPackageLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLogLevel.cs#L1-L34)
+- [OhMyPackageLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.ILogHelper.cs#L1-L19)
 - [MemoryPool.cs:1-208](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.cs#L1-L208)
 - [IMemory.cs:1-14](file://Assets/TEngine/Runtime/Core/MemoryPool/IMemory.cs#L1-L14)
 - [MemoryPool.MemoryCollection.cs:1-157](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.MemoryCollection.cs#L1-L157)
@@ -110,8 +110,8 @@ MPS --> MP
 - 时间管理
   - GameTime：封装Unity Time系列数据，提供每帧采样入口。
 - 日志系统
-  - GameFrameworkLog：静态日志门面，支持多级日志输出与可插拔日志辅助器。
-  - GameFrameworkLogLevel：日志等级枚举。
+  - OhMyPackageLog：静态日志门面，支持多级日志输出与可插拔日志辅助器。
+  - OhMyPackageLogLevel：日志等级枚举。
   - ILogHelper：日志辅助器接口。
 - 内存池
   - MemoryPool：静态门面，提供获取、归还、批量增删与统计查询。
@@ -125,9 +125,9 @@ MPS --> MP
 - [Module.cs:1-40](file://Assets/TEngine/Runtime/Core/Module.cs#L1-L40)
 - [Constant.cs:1-21](file://Assets/TEngine/Runtime/Core/Constant/Constant.cs#L1-L21)
 - [GameTime.cs:1-55](file://Assets/TEngine/Runtime/Core/GameTime/GameTime.cs#L1-L55)
-- [GameFrameworkLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L1-L800)
-- [GameFrameworkLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLogLevel.cs#L1-L34)
-- [GameFrameworkLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.ILogHelper.cs#L1-L19)
+- [OhMyPackageLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L1-L800)
+- [OhMyPackageLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLogLevel.cs#L1-L34)
+- [OhMyPackageLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.ILogHelper.cs#L1-L19)
 - [MemoryPool.cs:1-208](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.cs#L1-L208)
 - [IMemory.cs:1-14](file://Assets/TEngine/Runtime/Core/MemoryPool/IMemory.cs#L1-L14)
 - [MemoryPool.MemoryCollection.cs:1-157](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.MemoryCollection.cs#L1-L157)
@@ -153,7 +153,7 @@ class ModuleSystem {
 +GetModule~T~() T
 +RegisterModule~T~(module) T
 }
-class GameFrameworkLog {
+class OhMyPackageLog {
 +SetLogHelper(helper) void
 +Debug(message) void
 +Info(message) void
@@ -209,11 +209,11 @@ class Constant {
 }
 ModuleSystem --> Module : "管理"
 Module ..|> IUpdateModule : "可轮询"
-GameFrameworkLog --> ILogHelper : "委托"
+OhMyPackageLog --> ILogHelper : "委托"
 MemoryPool --> IMemory : "操作"
 MemoryPool --> MemoryCollection : "内部"
 MemoryPoolSetting --> MemoryPool : "控制严格检查"
-ModuleSystem --> GameFrameworkLog : "日志"
+ModuleSystem --> OhMyPackageLog : "日志"
 ModuleSystem --> MemoryPool : "内存"
 ModuleSystem --> GameTime : "时间"
 ```
@@ -221,8 +221,8 @@ ModuleSystem --> GameTime : "时间"
 **图示来源**
 - [ModuleSystem.cs:1-208](file://Assets/TEngine/Runtime/Core/ModuleSystem.cs#L1-L208)
 - [Module.cs:1-40](file://Assets/TEngine/Runtime/Core/Module.cs#L1-L40)
-- [GameFrameworkLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L1-L800)
-- [GameFrameworkLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.ILogHelper.cs#L1-L19)
+- [OhMyPackageLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L1-L800)
+- [OhMyPackageLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.ILogHelper.cs#L1-L19)
 - [MemoryPool.cs:1-208](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.cs#L1-L208)
 - [IMemory.cs:1-14](file://Assets/TEngine/Runtime/Core/MemoryPool/IMemory.cs#L1-L14)
 - [MemoryPool.MemoryCollection.cs:1-157](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.MemoryCollection.cs#L1-L157)
@@ -316,27 +316,27 @@ ModuleSystem --> GameTime : "时间"
 **章节来源**
 - [GameTime.cs:1-55](file://Assets/TEngine/Runtime/Core/GameTime/GameTime.cs#L1-L55)
 
-### 日志系统 API（GameFrameworkLog）
+### 日志系统 API（OhMyPackageLog）
 - 日志门面
   - SetLogHelper(ILogHelper)：设置日志辅助器，默认使用内置实现。
   - Debug/Info/Warn/Error/Fatal 多个重载：支持 object/string 以及最多16个泛型参数的格式化输出。
   - 内部通过 ILogHelper.Log(level, message) 输出，消息格式化由 Utility.Text.Format 完成。
-- 日志等级（GameFrameworkLogLevel）
+- 日志等级（OhMyPackageLogLevel）
   - Debug、Info、Warning、Error、Fatal。
 - 日志辅助器（ILogHelper）
   - Log(level, message)：实际输出接口。
 - 使用示例路径
-  - 设置辅助器：[GameFrameworkLog.cs:14-17](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L14-L17)
-  - Debug 输出（多参数格式化）：[GameFrameworkLog.cs:53-61](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L53-L61)
-  - Info 输出（多参数格式化）：[GameFrameworkLog.cs:577-585](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L577-L585)
-  - 日志等级枚举：[GameFrameworkLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLogLevel.cs#L1-L34)
-  - 辅助器接口：[GameFrameworkLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.ILogHelper.cs#L1-L19)
+  - 设置辅助器：[OhMyPackageLog.cs:14-17](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L14-L17)
+  - Debug 输出（多参数格式化）：[OhMyPackageLog.cs:53-61](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L53-L61)
+  - Info 输出（多参数格式化）：[OhMyPackageLog.cs:577-585](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L577-L585)
+  - 日志等级枚举：[OhMyPackageLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLogLevel.cs#L1-L34)
+  - 辅助器接口：[OhMyPackageLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.ILogHelper.cs#L1-L19)
   - 文本格式化工具：[Utility.Text.cs:28-41](file://Assets/TEngine/Runtime/Core/Utility/Utility.Text.cs#L28-L41)
 
 **章节来源**
-- [GameFrameworkLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L1-L800)
-- [GameFrameworkLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLogLevel.cs#L1-L34)
-- [GameFrameworkLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.ILogHelper.cs#L1-L19)
+- [OhMyPackageLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L1-L800)
+- [OhMyPackageLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLogLevel.cs#L1-L34)
+- [OhMyPackageLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.ILogHelper.cs#L1-L19)
 - [Utility.Text.cs:1-615](file://Assets/TEngine/Runtime/Core/Utility/Utility.Text.cs#L1-L615)
 
 ### 内存池 API（MemoryPool）
@@ -377,13 +377,13 @@ ModuleSystem --> GameTime : "时间"
 
 ## 依赖关系分析
 - 模块系统依赖
-  - 与日志系统：通过 GameFrameworkLog 输出异常与调试信息。
+  - 与日志系统：通过 OhMyPackageLog 输出异常与调试信息。
   - 与内存池：在 Shutdown 时调用 MemoryPool.ClearAll 清理。
   - 与时间管理：模块更新时接收 GameTime 提供的 elapsed 与 realElapsed。
   - 与文本工具：通过 Utility.Text.Format 进行日志格式化。
 - 日志系统依赖
   - ILogHelper：可替换实现，便于接入不同日志平台。
-  - GameFrameworkLogLevel：统一日志等级。
+  - OhMyPackageLogLevel：统一日志等级。
 - 内存池依赖
   - IMemory：要求对象实现 Clear()。
   - MemoryCollection：内部队列与统计。
@@ -391,11 +391,11 @@ ModuleSystem --> GameTime : "时间"
 
 ```mermaid
 graph LR
-MS["ModuleSystem"] --> LG["GameFrameworkLog"]
+MS["ModuleSystem"] --> LG["OhMyPackageLog"]
 MS --> MP["MemoryPool"]
 MS --> GT["GameTime"]
 MS --> UT["Utility.Text"]
-LG --> LGL["GameFrameworkLogLevel"]
+LG --> LGL["OhMyPackageLogLevel"]
 LG --> ILH["ILogHelper"]
 MP --> IM["IMemory"]
 MP --> MC["MemoryCollection"]
@@ -404,9 +404,9 @@ MPS["MemoryPoolSetting"] --> MP
 
 **图示来源**
 - [ModuleSystem.cs:1-208](file://Assets/TEngine/Runtime/Core/ModuleSystem.cs#L1-L208)
-- [GameFrameworkLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L1-L800)
-- [GameFrameworkLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLogLevel.cs#L1-L34)
-- [GameFrameworkLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.ILogHelper.cs#L1-L19)
+- [OhMyPackageLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L1-L800)
+- [OhMyPackageLogLevel.cs:1-34](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLogLevel.cs#L1-L34)
+- [OhMyPackageLog.ILogHelper.cs:1-19](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.ILogHelper.cs#L1-L19)
 - [MemoryPool.cs:1-208](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.cs#L1-L208)
 - [IMemory.cs:1-14](file://Assets/TEngine/Runtime/Core/MemoryPool/IMemory.cs#L1-L14)
 - [MemoryPool.MemoryCollection.cs:1-157](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.MemoryCollection.cs#L1-L157)
@@ -416,7 +416,7 @@ MPS["MemoryPoolSetting"] --> MP
 
 **章节来源**
 - [ModuleSystem.cs:1-208](file://Assets/TEngine/Runtime/Core/ModuleSystem.cs#L1-L208)
-- [GameFrameworkLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L1-L800)
+- [OhMyPackageLog.cs:1-800](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L1-L800)
 - [MemoryPool.cs:1-208](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.cs#L1-L208)
 - [GameTime.cs:1-55](file://Assets/TEngine/Runtime/Core/GameTime/GameTime.cs#L1-L55)
 - [Utility.Text.cs:1-615](file://Assets/TEngine/Runtime/Core/Utility/Utility.Text.cs#L1-L615)
@@ -450,7 +450,7 @@ MPS["MemoryPoolSetting"] --> MP
 
 **章节来源**
 - [ModuleSystem.cs:71-86](file://Assets/TEngine/Runtime/Core/ModuleSystem.cs#L71-L86)
-- [GameFrameworkLog.cs:30-31](file://Assets/TEngine/Runtime/Core/Log/GameFrameworkLog.cs#L30-L31)
+- [OhMyPackageLog.cs:30-31](file://Assets/TEngine/Runtime/Core/Log/OhMyPackageLog.cs#L30-L31)
 - [Utility.Text.cs:30-32](file://Assets/TEngine/Runtime/Core/Utility/Utility.Text.cs#L30-L32)
 - [MemoryPool.cs:93-96](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.cs#L93-L96)
 - [MemoryPool.MemoryCollection.cs:88-91](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.MemoryCollection.cs#L88-L91)

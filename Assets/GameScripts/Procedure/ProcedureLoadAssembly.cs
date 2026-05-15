@@ -9,10 +9,10 @@ using UnityEngine;
 using System.Reflection;
 using YooAsset;
 using Cysharp.Threading.Tasks;
-using GameFramework.Core.Framework;
-using GameFramework.Procedure;
-using GameFramework.Fsm;
-using GameFramework;
+using OhMyPackage.Core.Framework;
+using OhMyPackage.Procedure;
+using OhMyPackage.Fsm;
+using OhMyPackage;
 
 namespace Procedure
 {

@@ -438,7 +438,7 @@ MP["MemoryPool"] --> DBG
   - 预热常用对象池，减少运行期分配；定期检查内存池统计，发现异常增长及时回溯。
   - 对不可变对象池化收益有限，重点针对可复用结构体/缓冲区。
 - 数据结构与算法
-  - 使用GameFrameworkMultiDictionary等高效容器，减少查找与插入成本。
+  - 使用OhMyPackageMultiDictionary等高效容器，减少查找与插入成本。
   - 遍历顺序局部性优先，避免在Update中进行大规模排序或哈希表重建。
 - 多线程
   - 仅在主线程进行Unity API调用；工作线程负责纯计算与数据准备，结果回传主线程。
@@ -450,7 +450,7 @@ MP["MemoryPool"] --> DBG
 - [ProfilerDefineSymbols.cs:8-44](file://Assets/TEngine/Editor/DefineSymbols/ProfilerDefineSymbols.cs#L8-L44)
 - [TimerModule.cs:276-478](file://Assets/TEngine/Runtime/Module/TimerModule/TimerModule.cs#L276-L478)
 - [MemoryPool.cs:9-208](file://Assets/TEngine/Runtime/Core/MemoryPool/MemoryPool.cs#L9-L208)
-- [GameFrameworkMultiDictionary.cs:10-242](file://Assets/TEngine/Runtime/Core/DataStruct/GameFrameworkMultiDictionary.cs#L10-L242)
+- [OhMyPackageMultiDictionary.cs:10-242](file://Assets/TEngine/Runtime/Core/DataStruct/OhMyPackageMultiDictionary.cs#L10-L242)
 
 ## 故障排查指南
 - FPS骤降/卡顿

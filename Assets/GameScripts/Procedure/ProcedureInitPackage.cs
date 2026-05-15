@@ -3,8 +3,8 @@ using Cysharp.Threading.Tasks;
 using Launcher;
 using UnityEngine;
 using YooAsset;
-using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
-using Utility = GameFramework.Utility;
+using ProcedureOwner = OhMyPackage.Fsm.IFsm<OhMyPackage.Procedure.IProcedureManager>;
+using Utility = OhMyPackage.Utility;
 
 namespace Procedure
 {
