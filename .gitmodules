@@ -1,0 +1,3 @@
+[submodule "CustomPackages/OhMyPackage"]
+	path = CustomPackages/OhMyPackage
+	url = https://github.com/OxygenIsland/OhMyPackage.git
