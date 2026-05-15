@@ -50,6 +50,28 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 /warnaserror+:NU1605
 
 [sourceFiles]
+Assets/Editor/ReferenceFinder/
+ AssetTreeView.cs
+ AssetViewItem.cs
+ ClickColumn.cs
+ DragAreaGetObject.cs
+ ListInfo.cs
+ ReferenceFinderData.cs
+ ResourceReferenceInfo.cs
+ SortConfig.cs
+ SortHelper.cs
+ SortType.cs
+Assets/Editor/ToolbarExtender/
+ ToolbarCallback.cs
+ ToolbarExtender.cs
+ Unity6000_OR_New/MainToolbarExtender.cs
+ UnityToolbarExtenderLeft/
+  SceneLauncher.cs
+  UnityToolbarExtenderLeft.cs
+ UnityToolbarExtenderRight/
+  EditorPlayMode.cs
+  SceneSwitcher.cs
+  UnityToolbarExtenderRight.cs
 Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs
 Temp/obj/Assembly-CSharp-Editor/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
@@ -416,6 +438,7 @@ Library/ScriptAssemblies/
  YooAsset.Editor.dll
 Temp/bin/Debug/
  Assembly-CSharp.dll
+ Launcher.dll
  MyGame.Runtime.dll
  MyGame.Scopes.dll
  MyGame.Toolkit.dll

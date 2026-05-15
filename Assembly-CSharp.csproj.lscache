@@ -50,6 +50,21 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 /warnaserror+:NU1605
 
 [sourceFiles]
+Assets/GameScripts/
+ GameEntry.cs
+ Procedure/
+  ProcedureBase.cs
+  ProcedureClearCache.cs
+  ProcedureCreateDownloader.cs
+  ProcedureDownloadFile.cs
+  ProcedureDownloadOver.cs
+  ProcedureInitPackage.cs
+  ProcedureInitResources.cs
+  ProcedureLaunch.cs
+  ProcedureLoadAssembly.cs
+  ProcedurePreload.cs
+  ProcedureSplash.cs
+  ProcedureStartGame.cs
 Assets/SDKDemo/
  SdkApiAsync.cs
  SdkApiCoroutine.cs
@@ -415,6 +430,7 @@ Library/ScriptAssemblies/
  YooAsset.dll
  YooAsset.Editor.dll
 Temp/bin/Debug/
+ Launcher.dll
  MyGame.Runtime.dll
  MyGame.Scopes.dll
  MyGame.Toolkit.dll
