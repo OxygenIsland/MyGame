@@ -50,10 +50,10 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 /warnaserror+:NU1605
 
 [sourceFiles]
-Assets/Scripts/Toolkit/DiskCache/Abstractions/
+CustomPackages/OhMyPackage/Runtime/Toolkit/DiskCache/Abstractions/
  IDiskCache.cs
  IFileHashProvider.cs
-Assets/Scripts/Toolkit/DiskCache/
+CustomPackages/OhMyPackage/Runtime/Toolkit/DiskCache/
  DiskCacheConfig.cs
  DiskCacheManager.cs
  Hashing/
@@ -62,16 +62,16 @@ Assets/Scripts/Toolkit/DiskCache/
  Models/
   FileCacheEntry.cs
   FileCacheManifest.cs
-Assets/Scripts/Toolkit/IO/Abstractions/
+CustomPackages/OhMyPackage/Runtime/Toolkit/IO/Abstractions/
  IFileLoader.cs
  IJsonFileLoader.cs
-Assets/Scripts/Toolkit/IO/
+CustomPackages/OhMyPackage/Runtime/Toolkit/IO/
  FileLoadResult.cs
  Loaders/
   JsonFileLoader.cs
   RawBytesFileLoader.cs
   TextFileLoader.cs
-Assets/Scripts/Toolkit/Network/WebRequest/
+CustomPackages/OhMyPackage/Runtime/Toolkit/Network/WebRequest/
  IWebRequestService.cs
  Model/
   WebRequestOptions.cs
@@ -82,7 +82,7 @@ Assets/Scripts/Toolkit/Network/WebRequest/
  WebRequestConstant.cs
  WebRequestService.cs
  WebRequestServiceHelper.cs
-Assets/Scripts/Toolkit/_Archive/ServerLogin.cs
+CustomPackages/OhMyPackage/Runtime/Toolkit/_Archive/ServerLogin.cs
 Temp/obj/MyGame.Toolkit/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
 [metadataReferences]

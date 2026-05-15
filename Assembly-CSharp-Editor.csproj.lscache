@@ -439,17 +439,16 @@ Library/ScriptAssemblies/
 Temp/bin/Debug/
  Assembly-CSharp.dll
  Launcher.dll
- MyGame.Runtime.dll
- MyGame.Scopes.dll
  MyGame.Toolkit.dll
+ OhMyPackage.Runtime.dll
 
 [analyzerReferences]
 ../../../Program Files/Unity/Hub/Editor/Unity 6000.3.10f1/Editor/Data/Tools/BuildPipeline/Unity.SourceGenerators/
  Unity.Properties.SourceGenerator.dll
  Unity.SourceGenerators.dll
  Unity.UIToolkit.SourceGenerator.dll
-Assets/Scripts/Runtime/Core/Framework/GameEvent/GameEventAnalyzer.dll
 C:/Users/liubo32/.vscode/extensions/visualstudiotoolsforunity.vstuc-1.2.2/Analyzers/Microsoft.Unity.Analyzers.dll
+CustomPackages/OhMyPackage/Runtime/Core/Framework/GameEvent/GameEventAnalyzer.dll
 
 [analyzerConfigFiles]
 Temp/obj/Assembly-CSharp-Editor/Assembly-CSharp-Editor.GeneratedMSBuildEditorConfig.editorconfig
