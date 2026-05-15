@@ -36,6 +36,7 @@ MonoBehaviour:
     m_Scopes:
     - jp.hadashikick.vcontainer
     - com.harumak.unityscreennavigator
+    - com.tuyoogame.yooasset
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4

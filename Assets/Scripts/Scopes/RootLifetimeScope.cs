@@ -24,7 +24,7 @@ using MyGame.Scopes.Installers;
 using VContainer;
 using VContainer.Unity;
 
-namespace UnityGameFramework.Runtime
+namespace GameFramework
 {
     /// <summary>
     /// 根级生命周期作用域（全局唯一）
@@ -41,9 +41,6 @@ namespace UnityGameFramework.Runtime
                 _ => GameFrameworkEntry.GetModule<IFsmManager>(),
                 Lifetime.Singleton);
 
-            builder.Register<IEventManager>(
-                _ => GameFrameworkEntry.GetModule<IEventManager>(),
-                Lifetime.Singleton);
 
             builder.Register<IProcedureManager>(
                 _ => GameFrameworkEntry.GetModule<IProcedureManager>(),
@@ -51,6 +48,9 @@ namespace UnityGameFramework.Runtime
 
             // ── Toolkit 基础设施模块 ───────────────────────────────────
             new ToolkitInstaller().Install(builder);
+
+            // ── Config 模块 ────────────────────────────────────────────
+            new ConfigInstaller().Install(builder);
 
             // ── 注入场景中已存在的 MonoBehaviour ──────────────────────
             // GameEntry 仅作为 Unity 桥接器存在，不再是 FSM Owner。

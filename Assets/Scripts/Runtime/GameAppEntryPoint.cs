@@ -6,7 +6,7 @@ using GameFramework.Procedure;
 using NLog;
 using VContainer.Unity;
 
-namespace UnityGameFramework.Runtime
+namespace GameFramework
 {
     /// <summary>
     /// 纯 C# 应用入口。
@@ -17,16 +17,13 @@ namespace UnityGameFramework.Runtime
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
         private readonly IFsmManager m_FsmManager;
-        private readonly IEventManager m_EventManager;
         private readonly IProcedureManager m_ProcedureManager;
 
         public GameAppEntryPoint(
             IFsmManager fsmManager,
-            IEventManager eventManager,
             IProcedureManager procedureManager)
         {
             m_FsmManager = fsmManager;
-            m_EventManager = eventManager;
             m_ProcedureManager = procedureManager;
         }
 

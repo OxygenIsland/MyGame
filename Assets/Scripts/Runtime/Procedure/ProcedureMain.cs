@@ -1,6 +1,6 @@
 using GameFramework.Procedure;
 
-namespace UnityGameFramework.Runtime
+namespace GameFramework
 {
     public class ProcedureMain : ProcedureBase
     {

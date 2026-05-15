@@ -19,7 +19,7 @@
 
 using UnityEngine;
 
-namespace UnityGameFramework.Runtime
+namespace GameFramework
 {
     /// <summary>
     /// 启动桥接器。
