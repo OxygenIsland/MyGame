@@ -51,9 +51,9 @@ TemporaryDependencyNodeTargetIdentifier=netstandard2.1
 
 [sourceFiles]
 CustomPackages/OhMyPackage/Runtime/Core/Framework/Base/DataStruct/
- OhMyPackageLinkedList.cs
- OhMyPackageLinkedListRange.cs
- OhMyPackageMultiDictionary.cs
+ GameFrameworkLinkedList.cs
+ GameFrameworkLinkedListRange.cs
+ GameFrameworkMultiDictionary.cs
  TypeNamePair.cs
 CustomPackages/OhMyPackage/Runtime/Core/Framework/Base/EventPool/
  BaseEventArgs.cs
@@ -61,13 +61,13 @@ CustomPackages/OhMyPackage/Runtime/Core/Framework/Base/EventPool/
  EventPool.Event.cs
  EventPoolMode.cs
 CustomPackages/OhMyPackage/Runtime/Core/Framework/Base/
- OhMyPackageAction.cs
- OhMyPackageEntry.cs
- OhMyPackageEventArgs.cs
- OhMyPackageException.cs
- OhMyPackageFunc.cs
- OhMyPackageModule.cs
- OhMyPackageSerializer.cs
+ GameFrameworkAction.cs
+ GameFrameworkEntry.cs
+ GameFrameworkEventArgs.cs
+ GameFrameworkException.cs
+ GameFrameworkFunc.cs
+ GameFrameworkModule.cs
+ GameFrameworkSerializer.cs
  MemoryPool/
   IMemory.cs
   MemoryPool.cs
