@@ -1,8 +1,10 @@
 ﻿<Solution>
   <Project Path="OhMyPackage.Runtime.csproj" />
   <Project Path="MyGame.Toolkit.csproj" />
+  <Project Path="Unity.RenderPipelines.Universal.Runtime.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Launcher.csproj" />
   <Project Path="OhMyPackage.Editor.csproj" />
+  <Project Path="OhMyPackage.Sample.csproj" />
 </Solution>
